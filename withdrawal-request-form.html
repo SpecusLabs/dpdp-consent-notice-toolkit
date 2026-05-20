@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Rights Request — [COMPANY NAME]</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #f3f4f6;
+      padding: 2rem 1rem;
+    }
+
+    .wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+
+    .form-header {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 1.8rem 2rem;
+    }
+
+    .form-header h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .form-header .subtitle {
+      font-size: 0.82rem;
+      color: #aaa;
+      margin-top: 0.3rem;
+    }
+
+    .form-body { padding: 2rem; }
+
+    .disclaimer {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      border-left: 4px solid #f0a000;
+      padding: 0.8rem 1rem;
+      font-size: 0.84rem;
+      color: #5d4037;
+      margin-bottom: 2rem;
+      border-radius: 3px;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .field {
+      margin-bottom: 1.2rem;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.4rem;
+    }
+
+    .field .hint {
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 0.4rem;
+    }
+
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="tel"],
+    .field textarea,
+    .field select {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: #1a1a1a;
+      background: #fafafa;
+      transition: border-color 0.2s, background 0.2s;
+      appearance: none;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      outline: none;
+      border-color: #1a1a1a;
+      background: #fff;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.9rem center;
+      padding-right: 2.2rem;
+    }
+
+    .request-type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+    }
+
+    .request-type-option {
+      border: 2px solid #e0e0e0;
+      border-radius: 5px;
+      padding: 0.85rem 1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .request-type-option:hover {
+      border-color: #999;
+    }
+
+    .request-type-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .request-type-option.selected {
+      border-color: #1a1a1a;
+      background: #f5f5f5;
+    }
+
+    .request-type-option .rt-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #1a1a1a;
+      margin-bottom: 0.2rem;
+    }
+
+    .request-type-option .rt-desc {
+      font-size: 0.78rem;
+      color: #666;
+    }
+
+    .checkbox-group { display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      cursor: pointer;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      margin-top: 0.15rem;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      accent-color: #1a1a1a;
+      cursor: pointer;
+    }
+
+    .checkbox-item span {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .radio-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .radio-item input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #1a1a1a;
+      cursor: pointer;
+    }
+
+    .required-star { color: #c0392b; }
+
+    .submit-section {
+      border-top: 1px solid #e8e8e8;
+      padding-top: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.9rem;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .submit-btn:hover { background: #333; }
+    .submit-btn:disabled { background: #aaa; cursor: not-allowed; }
+
+    .success-msg {
+      display: none;
+      background: #e8f5e9;
+      border: 1px solid #a5d6a7;
+      border-radius: 4px;
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+    }
+
+    .success-msg .check { font-size: 2rem; margin-bottom: 0.5rem; }
+    .success-msg h3 { font-size: 1rem; color: #2e7d32; margin-bottom: 0.3rem; }
+    .success-msg p { font-size: 0.88rem; color: #555; }
+
+    .what-next {
+      background: #f9f9f9;
+      border: 1px solid #e8e8e8;
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    .what-next h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin-bottom: 0.6rem;
+    }
+
+    .what-next ul {
+      padding-left: 1.2rem;
+      color: #555;
+    }
+
+    .what-next ul li { margin-bottom: 0.3rem; }
+
+    .placeholder { color: #c05800; font-style: italic; }
+
+    .form-footer {
+      background: #f7f7f7;
+      border-top: 1px solid #e8e8e8;
+      padding: 0.9rem 2rem;
+      font-size: 0.75rem;
+      color: #aaa;
+      text-align: center;
+    }
+
+    @media (max-width: 520px) {
+      .form-body { padding: 1.5rem 1.1rem; }
+      .form-header { padding: 1.5rem 1.1rem; }
+      .request-type-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <div class="form-header">
+    <h1>Data Rights Request</h1>
+    <div class="subtitle">
+      <span class="placeholder">[COMPANY NAME]</span> &nbsp;·&nbsp;
+      Issued under the Digital Personal Data Protection Act, 2023
+    </div>
+  </div>
+
+  <div class="form-body">
+
+    <div class="disclaimer">
+      <strong>Template:</strong> Replace all <span style="color:#c05800">[SQUARE BRACKET]</span> fields before publishing. Not legal advice — review with a qualified professional.
+    </div>
+
+    <div id="formContent">
+
+      <!-- Section 1: Your Details -->
+      <div class="section">
+        <div class="section-title">Your Details</div>
+
+        <div class="field">
+          <label for="fullName">Full Name <span class="required-star">*</span></label>
+          <input type="text" id="fullName" placeholder="As it appears in our records" required />
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address <span class="required-star">*</span></label>
+          <input type="email" id="email" placeholder="Your registered email" required />
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="Your registered phone number" />
+        </div>
+
+        <div class="field">
+          <label for="relationship">Your Relationship With Us <span class="required-star">*</span></label>
+          <select id="relationship" required>
+            <option value="">Select one...</option>
+            <option value="customer">Customer / Buyer</option>
+            <option value="worker">Worker / Employee / Contractor</option>
+            <option value="former_customer">Former Customer</option>
+            <option value="former_worker">Former Worker / Employee</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Section 2: Request Type -->
+      <div class="section">
+        <div class="section-title">Type of Request <span class="required-star">*</span></div>
+
+        <div class="request-type-grid" id="requestTypeGrid">
+          <div class="request-type-option" onclick="selectType(this, 'access')">
+            <input type="radio" name="requestType" value="access" />
+            <div class="rt-title">Access</div>
+            <div class="rt-desc">I want to know what personal data you hold about me</div>
+          </div>
+          <div class="request-type-option" onclick="selectType(this, 'correction')">
+            <input type="radio" name="requestType" value="correction" />
+            <div class="rt-title">Correction</div>
+            <div class="rt-desc">I want to correct inaccurate or outdated data</div>
+          </div>
+          <div class="request-type-option" onclick="selectType(this, 'erasure')">
+            <input type="radio" name="requestType" value="erasure" />
+            <div class="rt-title">Erasure / Withdrawal</div>
+            <div class="rt-desc">I want my data deleted and consent withdrawn</div>
+          </div>
+          <div class="request-type-option" onclick="selectType(this, 'grievance')">
+            <input type="radio" name="requestType" value="grievance" />
+            <div class="rt-title">Grievance</div>
+            <div class="rt-desc">I have a complaint about how my data was handled</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Details -->
+      <div class="section">
+        <div class="section-title">Details of Your Request</div>
+        <div class="field">
+          <div class="hint">Please provide any additional information that will help us process your request. For corrections, specify what is incorrect and what the correct information is. For grievances, describe what happened.</div>
+          <textarea id="requestDetails" placeholder="Your request details..." rows="5"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 4: Verification -->
+      <div class="section">
+        <div class="section-title">Identity Verification</div>
+        <p style="font-size:0.88rem;color:#666;margin-bottom:1rem;">To protect your privacy, we need to confirm you are the person making this request.</p>
+        <div class="field">
+          <label>Please confirm one of the following:</label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="verification" value="email" />
+              <span>I am submitting this form from my registered email address</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="verification" value="aadhaar_last4" />
+              <span>I can provide the last 4 digits of my Aadhaar number</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="verification" value="phone" />
+              <span>I can confirm my registered phone number</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5: Acknowledgements -->
+      <div class="section">
+        <div class="section-title">Acknowledgements <span class="required-star">*</span></div>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox" id="ack1" onchange="checkSubmit()" />
+            <span>I am the person to whom this data relates (or their authorised representative)</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" id="ack2" onchange="checkSubmit()" />
+            <span>I understand that certain data may be retained where required by Indian law (e.g., tax records, wage records)</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" id="ack3" onchange="checkSubmit()" />
+            <span>I understand that withdrawal of consent for data needed to provide a service may affect my access to that service</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="submit-section">
+        <button class="submit-btn" id="submitBtn" disabled onclick="submitForm()">Submit Request</button>
+
+        <div class="what-next">
+          <h4>What Happens Next</h4>
+          <ul>
+            <li>We will acknowledge your request within <strong>48 hours</strong></li>
+            <li>We will process and respond within <strong><span class="placeholder">[7 working days]</span></strong></li>
+            <li>You will receive a reference number to track your request</li>
+            <li>Questions? Contact <span class="placeholder">[GRIEVANCE OFFICER EMAIL]</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- end formContent -->
+
+    <!-- Success State -->
+    <div class="success-msg" id="successMsg">
+      <div class="check">✅</div>
+      <h3>Request Submitted</h3>
+      <p>
+        We have received your data rights request. You will receive an acknowledgement within 48 hours at the email address you provided.<br /><br />
+        For questions, contact <span class="placeholder">[GRIEVANCE OFFICER EMAIL]</span> or call <span class="placeholder">[PHONE]</span>.
+      </p>
+    </div>
+
+  </div><!-- end form-body -->
+
+  <div class="form-footer">
+    Template by <a href="https://specuslabs.com" style="color:#aaa;">Specus Labs</a> &nbsp;·&nbsp; specuslabs.com &nbsp;·&nbsp; Free to use under CC BY 4.0
+  </div>
+
+</div>
+
+<script>
+  function selectType(el, value) {
+    document.querySelectorAll('.request-type-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    el.querySelector('input[type="radio"]').checked = true;
+  }
+
+  function checkSubmit() {
+    const a1 = document.getElementById('ack1').checked;
+    const a2 = document.getElementById('ack2').checked;
+    const a3 = document.getElementById('ack3').checked;
+    document.getElementById('submitBtn').disabled = !(a1 && a2 && a3);
+  }
+
+  function submitForm() {
+    const name = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const rel = document.getElementById('relationship').value;
+
+    if (!name || !email || !rel) {
+      alert('Please fill in your name, email, and relationship before submitting.');
+      return;
+    }
+
+    const requestType = document.querySelector('input[name="requestType"]:checked');
+    if (!requestType) {
+      alert('Please select the type of request.');
+      return;
+    }
+
+    // In production, connect this to your backend or a form service (e.g., Formspree, Netlify Forms, or your own API)
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Worker Data Collection Notice — Labour / Staffing</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #1a1a1a;
+      background: #f0ede8;
+      padding: 2rem 1rem;
+    }
+
+    .wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+
+    .header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .header-left h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .header-left .meta {
+      font-size: 0.82rem;
+      color: #adb5bd;
+      margin-top: 0.35rem;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 0.8rem;
+      color: #adb5bd;
+      line-height: 1.5;
+    }
+
+    .body { padding: 2rem 2.5rem; }
+
+    .disclaimer {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-left: 4px solid #e09800;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.85rem;
+      color: #664d03;
+      margin-bottom: 2rem;
+      border-radius: 3px;
+    }
+
+    .intro-box {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 3px;
+      padding: 1rem 1.3rem;
+      margin-bottom: 2rem;
+      font-size: 0.93rem;
+      color: #495057;
+    }
+
+    h2 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6c757d;
+      margin: 2rem 0 0.8rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+      margin-bottom: 1rem;
+    }
+
+    th {
+      background: #2c3e50;
+      color: #fff;
+      padding: 0.55rem 0.85rem;
+      text-align: left;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    td {
+      padding: 0.5rem 0.85rem;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .basis-statutory {
+      display: inline-block;
+      font-size: 0.72rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .basis-consent {
+      display: inline-block;
+      font-size: 0.72rem;
+      background: #e8f5e9;
+      color: #1b5e20;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .placeholder { color: #c05800; font-style: italic; }
+
+    .rights-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .right-item {
+      border: 1px solid #dee2e6;
+      border-radius: 3px;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.85rem;
+    }
+
+    .right-item strong { display: block; margin-bottom: 0.2rem; color: #2c3e50; }
+    .right-item span { font-size: 0.8rem; color: #6c757d; }
+
+    .grievance-box {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 3px;
+      padding: 1rem 1.3rem;
+      font-size: 0.9rem;
+    }
+
+    .grievance-box p { margin-bottom: 0.25rem; }
+
+    .consent-block {
+      background: #f8f9fa;
+      border: 2px solid #2c3e50;
+      border-radius: 4px;
+      padding: 1.5rem 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .consent-block h2 {
+      color: #2c3e50;
+      margin-top: 0;
+      border-bottom-color: #2c3e50;
+    }
+
+    .consent-item {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .consent-item input[type="checkbox"] {
+      margin-top: 0.2rem;
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+      accent-color: #2c3e50;
+    }
+
+    .signature-area {
+      border: 1px solid #dee2e6;
+      border-radius: 3px;
+      padding: 1.2rem 1.5rem;
+      margin-top: 1.5rem;
+      background: #fff;
+    }
+
+    .sig-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .sig-field {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .sig-field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6c757d;
+      margin-bottom: 0.3rem;
+    }
+
+    .sig-line {
+      border-bottom: 1px solid #aaa;
+      height: 2rem;
+    }
+
+    .footer-note {
+      margin-top: 1.5rem;
+      font-size: 0.82rem;
+      color: #6c757d;
+      border-top: 1px solid #dee2e6;
+      padding-top: 1rem;
+    }
+
+    .notice-footer {
+      background: #2c3e50;
+      color: #adb5bd;
+      padding: 0.9rem 2.5rem;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+
+    .notice-footer a { color: #adb5bd; }
+
+    @media (max-width: 600px) {
+      .body, .header { padding: 1.5rem 1.2rem; }
+      .notice-footer { padding: 0.9rem 1.2rem; }
+      .sig-row { flex-direction: column; gap: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <div class="header">
+    <div class="header-left">
+      <h1>Worker Data Collection Notice</h1>
+      <div class="meta">
+        <span class="placeholder">[COMPANY NAME]</span> &nbsp;·&nbsp;
+        <span class="placeholder">[OFFICE ADDRESS]</span> &nbsp;·&nbsp;
+        Last updated <span class="placeholder">[DATE]</span>
+      </div>
+    </div>
+    <div class="header-right">
+      Issued under Section 5<br>DPDP Act, 2023
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="disclaimer">
+      <strong>Template:</strong> Replace all <span style="color:#c05800">[SQUARE BRACKET]</span> fields before use. Not legal advice. Review with a qualified professional.
+    </div>
+
+    <div class="intro-box">
+      We are <span class="placeholder">[COMPANY NAME]</span>, a labour supply / staffing company. When you register with us, we collect personal information. This notice explains what we collect, why, who we share it with, and your rights under Indian law.
+    </div>
+
+    <h2>What We Collect and Why</h2>
+    <table>
+      <thead>
+        <tr><th>Data</th><th>Why</th><th>Basis</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Full name</td><td>Identity, worker profile, communications</td><td><span class="basis-statutory">Statutory</span></td></tr>
+        <tr><td>Date of birth</td><td>PF, ESIC compliance</td><td><span class="basis-statutory">Statutory</span></td></tr>
+        <tr><td>Home address</td><td>Communication and emergency contact</td><td><span class="basis-statutory">Statutory</span></td></tr>
+        <tr><td>Phone number</td><td>Job assignments, salary, attendance</td><td><span class="basis-statutory">Statutory</span></td></tr>
+        <tr><td>Aadhaar number</td><td>Identity verification, PF/ESIC registration</td><td><span class="basis-statutory">Statutory</span></td></tr>
+        <tr><td>PAN number</td><td>TDS deduction under Income Tax Act</td><td><span class="basis-statutory">Statutory</span></td></tr>
+        <tr><td>Bank account + IFSC</td><td>Salary payment directly to your account</td><td><span class="basis-statutory">Statutory</span></td></tr>
+        <tr><td>Photograph</td><td>Identity card, client site access</td><td><span class="basis-statutory">Statutory</span></td></tr>
+        <tr><td>Educational qualifications</td><td>Matching you to suitable job roles</td><td><span class="basis-consent">Consent</span></td></tr>
+        <tr><td>Work history / experience</td><td>Job placement and suitability assessment</td><td><span class="basis-consent">Consent</span></td></tr>
+        <tr><td>Skills and certifications</td><td>Job matching and skills record</td><td><span class="basis-consent">Consent</span></td></tr>
+        <tr><td><span class="placeholder">[OTHER DATA]</span></td><td><span class="placeholder">[PURPOSE]</span></td><td><span class="placeholder">[BASIS]</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2>Who We Share Your Data With</h2>
+    <table>
+      <thead>
+        <tr><th>Recipient</th><th>Data Shared</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Client company (where you are placed)</td><td>Name, photo, contact, work history</td><td>Placement and site access</td></tr>
+        <tr><td>EPFO / ESIC</td><td>Aadhaar, PAN, bank details, name, DOB</td><td>PF and ESIC registration</td></tr>
+        <tr><td><span class="placeholder">[PAYROLL PARTNER]</span></td><td>Name, bank account, salary</td><td>Salary processing</td></tr>
+        <tr><td><span class="placeholder">[OTHER]</span></td><td><span class="placeholder">[DATA]</span></td><td><span class="placeholder">[PURPOSE]</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.85rem;color:#666;margin-bottom:1.5rem;">We do not sell your personal data.</p>
+
+    <h2>Your Rights</h2>
+    <div class="rights-list">
+      <div class="right-item"><strong>Know</strong><span>Request a copy of data we hold about you</span></div>
+      <div class="right-item"><strong>Correct</strong><span>Fix inaccurate or outdated information</span></div>
+      <div class="right-item"><strong>Erase</strong><span>Request deletion (subject to legal retention)</span></div>
+      <div class="right-item"><strong>Withdraw</strong><span>Withdraw consent for non-statutory data</span></div>
+      <div class="right-item"><strong>Grievance</strong><span>File a complaint with our Grievance Officer</span></div>
+    </div>
+
+    <h2>Grievance Officer</h2>
+    <div class="grievance-box">
+      <p><strong>Name:</strong> <span class="placeholder">[GRIEVANCE OFFICER NAME]</span></p>
+      <p><strong>Phone:</strong> <span class="placeholder">[PHONE]</span></p>
+      <p><strong>Email:</strong> <span class="placeholder">[GRIEVANCE OFFICER EMAIL]</span></p>
+      <p><strong>Office hours:</strong> <span class="placeholder">[HOURS]</span></p>
+      <p><strong>Languages:</strong> <span class="placeholder">[e.g., Hindi, Marathi, English]</span></p>
+    </div>
+
+    <div class="consent-block">
+      <h2>Worker Consent and Acknowledgement</h2>
+
+      <div class="consent-item">
+        <input type="checkbox" id="c1" />
+        <label for="c1">I have read (or had this notice read to me) and understand what data <span class="placeholder">[COMPANY NAME]</span> collects and why.</label>
+      </div>
+
+      <div class="consent-item">
+        <input type="checkbox" id="c2" />
+        <label for="c2">I consent to <span class="placeholder">[COMPANY NAME]</span> sharing my work history, skills, and qualifications with client companies for job placement.</label>
+      </div>
+
+      <div class="consent-item">
+        <input type="checkbox" id="c3" />
+        <label for="c3">I understand that statutory data (Aadhaar, PAN, bank details) is collected under legal obligation and cannot be withdrawn while I am engaged with the company.</label>
+      </div>
+
+      <div class="signature-area">
+        <div class="sig-row">
+          <div class="sig-field">
+            <label>Worker Signature</label>
+            <div class="sig-line"></div>
+          </div>
+          <div class="sig-field">
+            <label>Worker Name (Print)</label>
+            <div class="sig-line"></div>
+          </div>
+        </div>
+        <div class="sig-row">
+          <div class="sig-field">
+            <label>Date</label>
+            <div class="sig-line"></div>
+          </div>
+          <div class="sig-field">
+            <label>Witnessed By (Staff)</label>
+            <div class="sig-line"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-note">
+      Full Privacy Policy: <span class="placeholder">[PRIVACY POLICY URL]</span> or ask at the registration desk.<br />
+      Issued under Section 5 of the Digital Personal Data Protection Act, 2023.
+    </div>
+
+  </div>
+
+  <div class="notice-footer">
+    Template by <a href="https://specuslabs.com">Specus Labs</a> &nbsp;·&nbsp; specuslabs.com &nbsp;·&nbsp; Free to use under CC BY 4.0
+  </div>
+
+</div>
+
+</body>
+</html>

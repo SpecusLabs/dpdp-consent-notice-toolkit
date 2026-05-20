@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data & AI Processing Notice — AI SaaS</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #111;
+      background: #f0f2f5;
+      padding: 2rem 1rem;
+    }
+
+    .wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0f1923 0%, #1a2f4a 100%);
+      color: #fff;
+      padding: 2rem 2.5rem;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .header h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .header .meta {
+      font-size: 0.8rem;
+      color: #8fa5be;
+      margin-top: 0.35rem;
+    }
+
+    .ai-badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #a8c7e8;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .body { padding: 2rem 2.5rem; }
+
+    .disclaimer {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      border-left: 4px solid #ffa000;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.84rem;
+      color: #5d4037;
+      margin-bottom: 2rem;
+      border-radius: 3px;
+    }
+
+    .ai-callout {
+      background: #e8f0fe;
+      border: 1px solid #c2d3f8;
+      border-left: 4px solid #3b6fe8;
+      border-radius: 3px;
+      padding: 1rem 1.3rem;
+      font-size: 0.88rem;
+      color: #1a2f6e;
+      margin-bottom: 2rem;
+    }
+
+    .ai-callout strong { display: block; margin-bottom: 0.3rem; }
+
+    h2 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #778;
+      margin: 2rem 0 0.8rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid #e8e8ee;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+      margin-bottom: 1rem;
+    }
+
+    th {
+      background: #0f1923;
+      color: #fff;
+      padding: 0.55rem 0.85rem;
+      text-align: left;
+      font-size: 0.73rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    td {
+      padding: 0.5rem 0.85rem;
+      border-bottom: 1px solid #f0f0f4;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f9f9fb; }
+
+    .placeholder { color: #b05000; font-style: italic; }
+
+    .tag-yes {
+      display: inline-block;
+      background: #fce4ec;
+      color: #b71c1c;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+    }
+
+    .tag-no {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #1b5e20;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+    }
+
+    .disclaimer-box {
+      background: #fff3e0;
+      border: 1px solid #ffe0b2;
+      border-left: 4px solid #ff8f00;
+      border-radius: 3px;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.87rem;
+      color: #4e342e;
+      margin-bottom: 1.5rem;
+    }
+
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .right-item {
+      border: 1px solid #e0e0e8;
+      border-radius: 4px;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.84rem;
+    }
+
+    .right-item .label {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: #0f1923;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .right-item .desc { font-size: 0.78rem; color: #666; }
+
+    .grievance-box {
+      background: #f5f5f7;
+      border: 1px solid #e0e0e8;
+      border-radius: 4px;
+      padding: 1rem 1.3rem;
+      font-size: 0.9rem;
+    }
+
+    .grievance-box p { margin-bottom: 0.25rem; }
+
+    .consent-block {
+      border: 2px solid #0f1923;
+      border-radius: 6px;
+      padding: 1.5rem 1.8rem;
+      margin-top: 2rem;
+      background: #f7f8fc;
+    }
+
+    .consent-block h2 {
+      color: #0f1923;
+      margin-top: 0;
+      border-bottom-color: #c8d0e0;
+    }
+
+    .consent-item {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.7rem;
+      background: #fff;
+      border: 1px solid #e0e0e8;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .consent-item input[type="checkbox"] {
+      margin-top: 0.2rem;
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+      accent-color: #0f1923;
+    }
+
+    .badge-required {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: #fce4ec;
+      color: #b71c1c;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .badge-optional {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: #e8f5e9;
+      color: #1b5e20;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 0.8rem 2.2rem;
+      background: #0f1923;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .submit-btn:hover { background: #1a2f4a; }
+    .submit-btn:disabled { background: #bbb; cursor: not-allowed; }
+
+    .footer-note {
+      margin-top: 1.5rem;
+      font-size: 0.82rem;
+      color: #888;
+      border-top: 1px solid #e8e8ee;
+      padding-top: 1rem;
+    }
+
+    .notice-footer {
+      background: #0f1923;
+      color: #6c8099;
+      padding: 0.9rem 2.5rem;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+
+    .notice-footer a { color: #6c8099; }
+
+    @media (max-width: 600px) {
+      .body, .header { padding: 1.5rem 1.2rem; }
+      .notice-footer { padding: 0.9rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <h1>Data &amp; AI Processing Notice</h1>
+        <div class="meta">
+          <span class="placeholder">[COMPANY NAME]</span> &nbsp;·&nbsp;
+          <span class="placeholder">[WEBSITE / APP URL]</span> &nbsp;·&nbsp;
+          Last updated <span class="placeholder">[DATE]</span>
+        </div>
+      </div>
+      <div class="ai-badge">AI Product</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="disclaimer">
+      <strong>Template:</strong> Replace all <span style="color:#b05000">[SQUARE BRACKET]</span> fields before publishing. Not legal advice — review with a qualified professional.
+    </div>
+
+    <div class="ai-callout">
+      <strong>Why This Notice Matters for AI Products</strong>
+      This product uses artificial intelligence. Your input data may be sent to third-party AI APIs to generate responses. This notice explains exactly what is sent, to whom, and whether it is used for model training.
+    </div>
+
+    <h2>What We Collect</h2>
+    <table>
+      <thead><tr><th>Data</th><th>How Collected</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Name</td><td>At signup</td><td>Account identification and personalisation</td></tr>
+        <tr><td>Email address</td><td>At signup</td><td>Account access, product updates, support</td></tr>
+        <tr><td>Data you input into the product</td><td>As you use it</td><td>To provide AI analysis and generate outputs</td></tr>
+        <tr><td>Usage data</td><td>Automatically</td><td>Product improvement and support</td></tr>
+        <tr><td>Payment information</td><td>At subscription</td><td>Processed by <span class="placeholder">[PAYMENT PROVIDER]</span> — we do not store card details</td></tr>
+        <tr><td><span class="placeholder">[OTHER]</span></td><td><span class="placeholder">[HOW]</span></td><td><span class="placeholder">[WHY]</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2>AI Processing — How Your Data Is Used</h2>
+    <table>
+      <thead><tr><th>AI Provider</th><th>What We Send</th><th>Used for Training?</th><th>Log Retention</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="placeholder">[e.g., OpenAI / Anthropic]</span></td>
+          <td><span class="placeholder">[Your input text / documents]</span></td>
+          <td><span class="placeholder">[<span class="tag-no">No</span> / <span class="tag-yes">Yes</span>]</span></td>
+          <td><span class="placeholder">[Provider's retention period]</span></td>
+        </tr>
+        <tr>
+          <td><span class="placeholder">[OTHER PROVIDER]</span></td>
+          <td><span class="placeholder">[DATA SENT]</span></td>
+          <td><span class="placeholder">[YES / NO]</span></td>
+          <td><span class="placeholder">[PERIOD]</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="disclaimer-box">
+      <strong>AI Output Disclaimer:</strong> AI-generated outputs from this product may contain errors or inaccuracies. Do not rely on them for legal, medical, financial, or other professional decisions without independent verification.
+    </div>
+
+    <h2>Who We Share Your Data With</h2>
+    <table>
+      <thead><tr><th>Third Party</th><th>Data Shared</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><span class="placeholder">[AI PROVIDER]</span></td><td>Your input data</td><td>To generate AI outputs</td></tr>
+        <tr><td><span class="placeholder">[CLOUD HOST]</span></td><td>All product data</td><td>Hosting and storage</td></tr>
+        <tr><td><span class="placeholder">[ANALYTICS]</span></td><td>Anonymised usage data</td><td>Product analytics</td></tr>
+        <tr><td><span class="placeholder">[OTHER]</span></td><td><span class="placeholder">[DATA]</span></td><td><span class="placeholder">[PURPOSE]</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.85rem;color:#666;margin-bottom:1.5rem;">We do not sell your personal data.</p>
+
+    <h2>Your Rights</h2>
+    <div class="rights-grid">
+      <div class="right-item"><span class="label">Access</span><span class="desc">Request a copy of your data</span></div>
+      <div class="right-item"><span class="label">Correct</span><span class="desc">Fix inaccurate account data</span></div>
+      <div class="right-item"><span class="label">Erase</span><span class="desc">Delete your account and data</span></div>
+      <div class="right-item"><span class="label">Withdraw</span><span class="desc">Withdraw consent at any time</span></div>
+      <div class="right-item"><span class="label">Grievance</span><span class="desc">File with our Grievance Officer</span></div>
+    </div>
+
+    <h2>Grievance Officer</h2>
+    <div class="grievance-box">
+      <p><strong>Name:</strong> <span class="placeholder">[GRIEVANCE OFFICER NAME]</span></p>
+      <p><strong>Email:</strong> <span class="placeholder">[GRIEVANCE OFFICER EMAIL]</span></p>
+      <p><strong>Response time:</strong> <span class="placeholder">[e.g., 7 working days]</span></p>
+    </div>
+
+    <div class="consent-block">
+      <h2>Your Consent</h2>
+
+      <div class="consent-item">
+        <input type="checkbox" id="c1" onchange="checkMain()" />
+        <label for="c1">
+          I have read this notice and consent to <span class="placeholder">[COMPANY NAME]</span> collecting my data and sending my inputs to the AI providers listed above to generate responses.
+          <span class="badge-required">Required</span>
+        </label>
+      </div>
+
+      <div class="consent-item">
+        <input type="checkbox" id="c2" />
+        <label for="c2">
+          I consent to <span class="placeholder">[COMPANY NAME]</span> using my anonymised input data to improve its AI models.
+          <span class="badge-optional">Optional</span>
+        </label>
+      </div>
+
+      <div class="consent-item">
+        <input type="checkbox" id="c3" />
+        <label for="c3">
+          I consent to receiving product updates, tips, and feature announcements by email.
+          <span class="badge-optional">Optional</span>
+        </label>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" disabled onclick="handleSubmit()">Confirm &amp; Continue</button>
+    </div>
+
+    <div class="footer-note">
+      Full Privacy Policy: <a href="#"><span class="placeholder">[PRIVACY POLICY URL]</span></a>
+      &nbsp;·&nbsp; Issued under Section 5 of the Digital Personal Data Protection Act, 2023.
+    </div>
+
+  </div>
+
+  <div class="notice-footer">
+    Template by <a href="https://specuslabs.com">Specus Labs</a> &nbsp;·&nbsp; specuslabs.com &nbsp;·&nbsp; Free to use under CC BY 4.0
+  </div>
+
+</div>
+
+<script>
+  function checkMain() {
+    document.getElementById('submitBtn').disabled = !document.getElementById('c1').checked;
+  }
+  function handleSubmit() {
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Consent Recorded ✓';
+    btn.style.background = '#1b5e20';
+    btn.disabled = true;
+  }
+</script>
+
+</body>
+</html>

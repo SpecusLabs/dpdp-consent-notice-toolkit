@@ -1,0 +1,11 @@
+Reference Number,Date Received,Received Via,Requestor Name,Requestor Email,Requestor Phone,Requestor Type,Request Type,Request Summary,Acknowledgement Sent Date,Acknowledgement Sent By,Identity Verified,Verification Method,Internal Systems Checked,Data Found,Internal Deletion Date,Data Retained (Legal Basis),Vendors Notified (Name + Date),Vendor Deletion Confirmed (Name + Date),Completion Response Sent Date,Completed Within 7 Days,Outcome,Notes
+WDR-2024-001,10-01-2024,Email,Priya Sharma,priya@example.com,9876543210,Customer,Erasure,Requested deletion of all personal data and withdrawal of marketing consent,11-01-2024,Anita R.,Yes,Email match,"CRM, Mailchimp, order system, Delhivery",Yes,16-01-2024,"Order transaction records #1042 and #1087 — GST Act 7yr retention","Mailchimp (16-01-2024), Delhivery (16-01-2024)","Mailchimp confirmed 17-01-2024, Delhivery pending",16-01-2024,Yes,Partial,"Customer acknowledged legal retention in reply. Delhivery confirmation still pending — follow up 23-01-2024."
+WDR-2024-002,,,,,,,,,,,,,,,,,,,,,,[NEXT ENTRY]
+WDR-2024-003,,,,,,,,,,,,,,,,,,,,,,[NEXT ENTRY]
+WDR-2024-004,,,,,,,,,,,,,,,,,,,,,,[NEXT ENTRY]
+WDR-2024-005,,,,,,,,,,,,,,,,,,,,,,[NEXT ENTRY]
+WDR-2024-006,,,,,,,,,,,,,,,,,,,,,,[NEXT ENTRY]
+WDR-2024-007,,,,,,,,,,,,,,,,,,,,,,[NEXT ENTRY]
+WDR-2024-008,,,,,,,,,,,,,,,,,,,,,,[NEXT ENTRY]
+WDR-2024-009,,,,,,,,,,,,,,,,,,,,,,[NEXT ENTRY]
+WDR-2024-010,,,,,,,,,,,,,,,,,,,,,,[NEXT ENTRY]

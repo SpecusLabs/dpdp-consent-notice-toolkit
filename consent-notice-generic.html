@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Collection Consent Notice</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fafaf8;
+      padding: 2rem 1rem;
+    }
+
+    .notice-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-top: 5px solid #1a1a1a;
+      padding: 3rem 3.5rem;
+    }
+
+    .notice-header {
+      border-bottom: 2px solid #1a1a1a;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .notice-header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .notice-header .meta {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 0.4rem;
+      font-style: italic;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    .disclaimer {
+      background: #fffbea;
+      border-left: 4px solid #e6b800;
+      padding: 0.9rem 1.2rem;
+      font-size: 0.88rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #5a4a00;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #1a1a1a;
+      margin-top: 2.2rem;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    p { margin-bottom: 0.9rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin-bottom: 1.2rem;
+    }
+
+    th {
+      background: #1a1a1a;
+      color: #fff;
+      text-align: left;
+      padding: 0.6rem 0.9rem;
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f9f9f7; }
+
+    ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    ul li { margin-bottom: 0.4rem; }
+
+    .rights-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .rights-list li {
+      padding: 0.4rem 0 0.4rem 1.6rem;
+      position: relative;
+      border-bottom: 1px solid #f0f0f0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.94rem;
+    }
+
+    .rights-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #1a1a1a;
+      font-weight: bold;
+    }
+
+    .grievance-box {
+      background: #f5f5f3;
+      border: 1px solid #ddd;
+      padding: 1.2rem 1.5rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+    }
+
+    .grievance-box p { margin-bottom: 0.3rem; }
+    .grievance-box strong { color: #1a1a1a; }
+
+    .consent-block {
+      margin-top: 2.5rem;
+      border: 2px solid #1a1a1a;
+      padding: 1.5rem 2rem;
+      background: #f9f9f7;
+    }
+
+    .consent-block h2 {
+      border: none;
+      margin-top: 0;
+      padding-bottom: 0;
+      font-size: 1rem;
+    }
+
+    .consent-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+      cursor: pointer;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .consent-label input[type="checkbox"] {
+      margin-top: 0.2rem;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      flex-shrink: 0;
+      accent-color: #1a1a1a;
+    }
+
+    .consent-btn {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 0.75rem 2rem;
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .consent-btn:hover { background: #333; }
+    .consent-btn:disabled { background: #aaa; cursor: not-allowed; }
+
+    .policy-link {
+      margin-top: 1.5rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.88rem;
+      color: #555;
+    }
+
+    .policy-link a { color: #1a1a1a; }
+
+    .notice-footer {
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #e0e0e0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.78rem;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    .placeholder { color: #b05000; font-style: italic; }
+
+    @media (max-width: 600px) {
+      .notice-wrapper { padding: 1.5rem 1.2rem; }
+      table { font-size: 0.82rem; }
+      th, td { padding: 0.5rem 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="notice-wrapper">
+
+  <div class="notice-header">
+    <h1>Data Collection Notice</h1>
+    <div class="meta">
+      Issued by <span class="placeholder">[COMPANY NAME]</span> &nbsp;|&nbsp;
+      Last updated <span class="placeholder">[DATE]</span>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Template Notice:</strong> All fields in <span style="color:#b05000">[SQUARE BRACKETS]</span> must be filled in before this notice is published. This template is provided by Specus Labs for informational purposes. It is not legal advice. Review with a qualified professional before use.
+  </div>
+
+  <h2>What We Collect</h2>
+  <p>When you <span class="placeholder">[interact with us / use our service / fill in this form]</span>, we collect the following personal data:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Why We Collect It</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td>To identify you and address communications</td>
+      </tr>
+      <tr>
+        <td>Email address</td>
+        <td>To send you <span class="placeholder">[order confirmations / account updates]</span></td>
+      </tr>
+      <tr>
+        <td>Phone number</td>
+        <td>To contact you regarding <span class="placeholder">[your request / account / service]</span></td>
+      </tr>
+      <tr>
+        <td><span class="placeholder">[ADDRESS / LOCATION]</span></td>
+        <td><span class="placeholder">[To deliver your order / provide services]</span></td>
+      </tr>
+      <tr>
+        <td><span class="placeholder">[PAYMENT INFORMATION]</span></td>
+        <td>Processed securely by <span class="placeholder">[PAYMENT PARTNER]</span> — we do not store card details</td>
+      </tr>
+      <tr>
+        <td><span class="placeholder">[OTHER DATA]</span></td>
+        <td><span class="placeholder">[STATE PURPOSE]</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Who We Share Your Data With</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Third Party</th>
+        <th>What We Share</th>
+        <th>Why</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="placeholder">[VENDOR NAME]</span></td>
+        <td><span class="placeholder">[DATA SHARED]</span></td>
+        <td><span class="placeholder">[PURPOSE]</span></td>
+      </tr>
+      <tr>
+        <td><span class="placeholder">[VENDOR NAME]</span></td>
+        <td><span class="placeholder">[DATA SHARED]</span></td>
+        <td><span class="placeholder">[PURPOSE]</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>We do not sell your personal data to any third party.</p>
+
+  <h2>How Long We Keep Your Data</h2>
+  <p>We retain your personal data for <span class="placeholder">[RETENTION PERIOD]</span>, after which it is deleted or anonymised. Some data may be kept longer if required by Indian law.</p>
+
+  <h2>Your Rights</h2>
+  <p>Under the Digital Personal Data Protection Act, 2023, you have the right to:</p>
+  <ul class="rights-list">
+    <li><strong>Access</strong> the personal data we hold about you</li>
+    <li><strong>Correct</strong> any inaccurate or incomplete data</li>
+    <li><strong>Erase</strong> your data (subject to legal retention requirements)</li>
+    <li><strong>Withdraw</strong> your consent at any time</li>
+    <li><strong>File a grievance</strong> with our Grievance Officer</li>
+    <li><strong>Complain</strong> to the Data Protection Board of India</li>
+  </ul>
+
+  <h2>How to Withdraw Your Consent</h2>
+  <p>You can withdraw your consent at any time by:</p>
+  <ul>
+    <li>Emailing <span class="placeholder">[WITHDRAWAL EMAIL ADDRESS]</span></li>
+    <li>Submitting a request at <span class="placeholder">[WITHDRAWAL FORM URL]</span></li>
+  </ul>
+  <p>We will process your request within <span class="placeholder">[TIMEFRAME — e.g., 7 working days]</span>.</p>
+
+  <h2>Grievance Officer</h2>
+  <div class="grievance-box">
+    <p><strong>Name:</strong> <span class="placeholder">[GRIEVANCE OFFICER NAME]</span></p>
+    <p><strong>Designation:</strong> <span class="placeholder">[DESIGNATION]</span></p>
+    <p><strong>Email:</strong> <span class="placeholder">[GRIEVANCE OFFICER EMAIL]</span></p>
+    <p><strong>Response time:</strong> <span class="placeholder">[e.g., 7 working days]</span></p>
+    <p style="margin-top:0.6rem;font-size:0.88rem;color:#555;">Unresolved grievances may be escalated to the <strong>Data Protection Board of India</strong>.</p>
+  </div>
+
+  <div class="consent-block">
+    <h2>Your Consent</h2>
+    <p style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:0.93rem;">By ticking the box below, you confirm that you have read this notice and consent to <span class="placeholder">[COMPANY NAME]</span> collecting and using your personal data as described above. You may withdraw this consent at any time.</p>
+    <label class="consent-label">
+      <input type="checkbox" id="consentCheck" onchange="toggleBtn()" />
+      <span>I have read this notice and consent to <span class="placeholder">[COMPANY NAME]</span> collecting and using my personal data as described above.</span>
+    </label>
+    <br />
+    <button class="consent-btn" id="consentBtn" disabled onclick="handleConsent()">I Agree</button>
+  </div>
+
+  <div class="policy-link">
+    For our full Privacy Policy, visit: <a href="#"><span class="placeholder">[PRIVACY POLICY URL]</span></a><br />
+    This notice is issued under Section 5 of the Digital Personal Data Protection Act, 2023.
+  </div>
+
+  <div class="notice-footer">
+    Template by <a href="https://specuslabs.com" style="color:#555;">Specus Labs</a> &nbsp;·&nbsp;
+    specuslabs.com &nbsp;·&nbsp; Free to use under CC BY 4.0<br />
+    This is not legal advice. Review with a qualified professional before use.
+  </div>
+
+</div>
+
+<script>
+  function toggleBtn() {
+    const cb = document.getElementById('consentCheck');
+    const btn = document.getElementById('consentBtn');
+    btn.disabled = !cb.checked;
+  }
+
+  function handleConsent() {
+    const btn = document.getElementById('consentBtn');
+    btn.textContent = 'Consent Recorded ✓';
+    btn.disabled = true;
+    btn.style.background = '#2a7a2a';
+  }
+</script>
+
+</body>
+</html>
